@@ -1,0 +1,227 @@
+package Automation;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+public class ecommerce {
+    public static void main(String[] args) {
+
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lalit\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        System.out.println("Chrome Browser Started!!");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+
+        WebDriver driver = new ChromeDriver(options);
+
+        try {
+            driver.manage().window().maximize();
+            System.out.println("Browser Maximized");
+            driver.get("https://automationteststore.com/");
+            System.out.println("Website Opened Successfully");
+            
+            Thread.sleep(5000);
+            
+            //Invalid Credentials
+            WebElement loginFake = driver.findElement(By.cssSelector("#customer_menu_top > li > a"));
+            loginFake.click();
+
+            WebElement loginEmailFake = driver.findElement(By.id("loginFrm_loginname"));
+            loginEmailFake.click();
+            loginEmailFake.sendKeys("Lalith");
+            
+            Thread.sleep(2000);
+
+            WebElement passFake = driver.findElement(By.id("loginFrm_password"));
+            passFake.click();
+            passFake.sendKeys("Slk@11234");
+            
+            Thread.sleep(2000);
+
+            WebElement loginButtonF = driver.findElement(By.cssSelector("#loginFrm > fieldset > button"));
+            loginButtonF.click();
+            System.out.println("Invalid Credentials!!");
+            
+            Thread.sleep(2000);
+
+            driver.navigate().refresh();
+
+            //Valid Credentials
+            WebElement loginButton = driver.findElement(By.cssSelector("#customer_menu_top > li > a"));
+            loginButton.click();
+
+            WebElement loginEmail = driver.findElement(By.id("loginFrm_loginname"));
+            loginEmail.click();
+            loginEmail.sendKeys("Lalit");
+            
+            Thread.sleep(2000);
+
+            WebElement pass = driver.findElement(By.id("loginFrm_password"));
+            pass.click();
+            pass.sendKeys("Slk@1234");
+            
+            Thread.sleep(2000);
+
+            WebElement loginButtonR = driver.findElement(By.cssSelector("#loginFrm > fieldset > button"));
+            loginButtonR.click();
+            System.out.println("Credentials Are Valid");
+            
+            Thread.sleep(5000);
+            
+            //Adding Shirt
+            WebElement shirt = driver.findElement(By.cssSelector("#filter_keyword"));
+            shirt.click();
+            shirt.sendKeys("shirt");
+            shirt.sendKeys(Keys.ENTER);
+            
+            Thread.sleep(3000);
+
+            WebElement shirts = driver.findElement(By.cssSelector("#maincontainer > div > div > div > div > div.thumbnails.grid.row.list-inline > div:nth-child(2) > div.fixed_wrapper > div > a"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", shirts);
+            shirts.click();
+            
+            Thread.sleep(2000);
+            
+            WebElement shirtcolor = driver.findElement(By.cssSelector("#option350"));
+            shirtcolor.click();
+            
+            Thread.sleep(2000);
+            
+            WebElement dropdownItemColor = driver.findElement(By.cssSelector("#option350 > option:nth-child(2)"));
+            dropdownItemColor.click();
+ WebElement dropdownItemSize = driver.findElement(By.cssSelector("#option351"));
+            dropdownItemSize.click();
+  
+            WebElement dropdownItemSizeS = driver.findElement(By.cssSelector("#option351 > option:nth-child(2)"));
+            dropdownItemSizeS.click();
+            
+            Thread.sleep(3000);
+
+            WebElement shirtcart = driver.findElement(By.cssSelector("#product > fieldset > div:nth-child(6) > ul > li > a"));
+            shirtcart.click();
+            System.out.println("Shirt Added!!");
+            
+            Thread.sleep(5000);
+
+            //Adding Perfume
+            WebElement searchperfume = driver.findElement(By.cssSelector("#filter_keyword"));
+            searchperfume.click();
+            searchperfume.sendKeys("shoe");
+            searchperfume.sendKeys(Keys.ENTER);
+            
+            WebElement apparel= driver.findElement(By.cssSelector("#category_id > option:nth-child(2)"));
+            apparel.click();
+            
+            WebElement filter= driver.findElement(By.cssSelector("#category_id"));
+            filter.click();
+            
+            WebElement dropdownItemStrength = driver.findElement(By.xpath("//*[@id=\"category_id\"]/option[2]"));
+            dropdownItemStrength.click();
+            
+            WebElement search= driver.findElement(By.cssSelector("#search_button"));
+            search.click();
+      
+            WebElement sort= driver.findElement(By.id("sort"));
+            sort.click();
+            
+            WebElement sortprice= driver.findElement(By.cssSelector("#sort > option:nth-child(5)"));
+            sortprice.click();
+            
+            WebElement selectshoe= driver.findElement(By.cssSelector("#maincontainer > div > div > div > div > div.thumbnails.grid.row.list-inline > div:nth-child(3) > div.fixed_wrapper > div > a"));
+            selectshoe.click();
+            
+            WebElement shoesize= driver.findElement(By.cssSelector("#option344750"));
+            shoesize.click();
+            
+            WebElement dropdownItemShoeColor = driver.findElement(By.cssSelector("#option345"));
+            dropdownItemShoeColor.click();
+            
+            WebElement perfumecart = driver.findElement(By.cssSelector("#product > fieldset > div:nth-child(5) > ul > li > a"));
+            perfumecart.click();
+            System.out.println("Perfume Added!!");
+            
+            Thread.sleep(5000);
+
+            //Adding Shampoo
+            WebElement searchshampoo = driver.findElement(By.cssSelector("#filter_keyword"));
+            searchshampoo.click();
+            searchshampoo.sendKeys("shampoo");
+            searchshampoo.sendKeys(Keys.ENTER);
+            
+            Thread.sleep(3000);
+
+            WebElement shampoo = driver.findElement(By.cssSelector("#maincontainer > div > div > div > div > div.thumbnails.grid.row.list-inline > div:nth-child(1) > div.fixed_wrapper > div > a"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", shampoo);
+            shampoo.click();
+            
+            Thread.sleep(3000);
+
+            WebElement shampoocart = driver.findElement(By.cssSelector("#product > fieldset > div:nth-child(4) > ul > li > a"));
+            shampoocart.click();
+            System.out.println("Shampoo Added!!");
+            
+            Thread.sleep(5000);
+            
+            //Adding Cream
+            WebElement searchbodycream = driver.findElement(By.cssSelector("#filter_keyword"));
+            searchbodycream.click();
+            searchbodycream.sendKeys("cream");
+            searchbodycream.sendKeys(Keys.ENTER);
+            
+            Thread.sleep(3000);
+            
+            WebElement bodycream = driver.findElement(By.cssSelector("#maincontainer > div > div > div > div > div.thumbnails.grid.row.list-inline > div:nth-child(3) > div.fixed_wrapper > div > a"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", bodycream);
+            bodycream.click();
+            
+            Thread.sleep(3000);
+           
+            WebElement bodycreamcart = driver.findElement(By.xpath("//*[@id=\"product\"]/fieldset/div[4]/ul/li/a"));
+            bodycreamcart.click();
+            System.out.println("Cream Added!!");
+            
+            Thread.sleep(5000);
+            //Removing Shampoo
+            WebElement delete = driver.findElement(By.xpath("//*[@id=\"cart\"]/div/div[1]/table/tbody/tr[4]/td[7]/a"));
+            delete.click();
+            System.out.println("Shampoo Removed!!");
+            
+            Thread.sleep(5000);
+            //Checkout
+            WebElement checkout = driver.findElement(By.xpath("//*[@id=\"cart_checkout2\"]"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", checkout);
+            checkout.click();
+            
+            Thread.sleep(5000);
+            //Confirm Order
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0, 3000)","");
+            
+            Thread.sleep(2000);
+
+            WebElement confirmorder = driver.findElement(By.xpath("//*[@id=\"checkout_btn\"]"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", confirmorder);
+            confirmorder.click();
+            System.out.println("Order Successful !!");
+            
+            //Logout
+            WebElement hover = driver.findElement(By.xpath("//*[@id=\"main_menu_top\"]/li[2]/a"));
+            Actions actions = new Actions(driver);
+            actions.moveToElement(hover).perform();
+            
+            Thread.sleep(2000);
+
+            WebElement dropdownItem = driver.findElement(By.xpath("//*[@id=\"main_menu_top\"]/li[2]/ul/li[2]/a/span"));
+            dropdownItem.click();
+            System.out.println("Logged Out Successfully");
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {    
+    }
+    }
+}
